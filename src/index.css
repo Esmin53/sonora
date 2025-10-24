@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Primary colors */
+  --color-primary-light: #4f46e5;
+  --color-primary-dark:  #818cf8;
+
+  /* Secondary colors */
+  --color-secondary-light: #6366f1;
+  --color-secondary-dark:  #a5b4fc;
+
+  /* Accent colors */
+  --color-accent-light: #7b2cbf;
+  --color-accent-dark:  #7b2cbf;
+
+  /* Text colors */
+  --color-text-light: #111827;
+  --color-text-dark:  #f3f4f6;
+
+  /* Background colors */
+  --color-background-light: #e0fbfc;
+  --color-background-dark:  #161a1d;
+
+  /* Surface colors (cards, panels) */
+  --color-surface-light: #ffffff;
+  --color-surface-dark:  #1e293b;
+}
+
+* {
+  font-family: "Nunito";
+}
+
+.blob {
+  border-radius:
+    /* horizontal */
+    100% 30% 60% 70% /
+    /* vertical */
+    50% 40% 70% 70%;
+}
