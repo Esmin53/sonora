@@ -20,12 +20,12 @@
   --color-text-dark:  #f3f4f6;
 
   /* Background colors */
-  --color-background-light: #e0fbfc;
-  --color-background-dark:  #161a1d;
+  --color-background-light: #d7e3fc;
+  --color-background-dark:  #070b14;
 
   /* Surface colors (cards, panels) */
-  --color-surface-light: #ffffff;
-  --color-surface-dark:  #1e293b;
+  --color-foreground-light: #ccdbfd ;
+  --color-foreground-dark:  #0a0f1b;
 }
 
 * {
@@ -39,3 +39,4 @@
     /* vertical */
     50% 40% 70% 70%;
 }
+
