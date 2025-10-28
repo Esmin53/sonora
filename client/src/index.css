@@ -40,3 +40,6 @@
     50% 40% 70% 70%;
 }
 
+.gradient-bg {
+  background: linear-gradient(to bottom, #070b14, #0a0f1b);
+}

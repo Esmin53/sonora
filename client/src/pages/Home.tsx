@@ -1,8 +1,8 @@
 import Banner from '../components/Banner'
 import { MOOD_PLAYLISTS } from '../lib/data'
 import SeasonPlaylists from '../components/SeasonPlaylists'
-import { FaMusic } from 'react-icons/fa6'
 import EraPlaylists from '../components/ErasPlaylists'
+import { Link } from 'react-router-dom'
 
 
 const Home = () => {
@@ -20,10 +20,10 @@ const Home = () => {
                 <p className='sm:text-lg font-medium'>Choose a customized playlist baset on your current mood</p>
                 <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 pt-2 md:pt-4'>
  
-                    {MOOD_PLAYLISTS.map((item, index) => <div className={`aspect-square ${item.color} rounded flex items-center justify-center cursor-pointer hover:animate-pulse relative shadow-sm`} key={index}>
+                    {MOOD_PLAYLISTS.map((item, index) => <Link to={`/playlists?keywords=${item.keyword}&label=${item.label}`} className={`aspect-square ${item.color} rounded flex items-center justify-center cursor-pointer hover:animate-pulse relative shadow-sm`} key={index}>
                         <img className='absolute w-full z-0 opacity-30' src='/soundwave2.svg' />
                         <p className='text-3xl sm:text-4xl font-medium antialiased text-text-dark z-10'>{item.label}</p>
-                    </div>)}
+                    </Link>)}
                 </div>
                 <SeasonPlaylists />
                 <EraPlaylists />

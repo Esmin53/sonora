@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ERA_PLAYLISTS } from '../lib/data'
 
 const EraPlaylists = () => {
@@ -9,10 +10,10 @@ const EraPlaylists = () => {
                 </div>
                 <p className='sm:text-lg font-medium'>Travel in time with these playlists</p>
                 <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 pt-2 md:pt-4'>
-                    {ERA_PLAYLISTS.map((item, index) => <div className={`aspect-square ${item.color} rounded flex items-center justify-center cursor-pointer hover:animate-pulse skulls relative`} key={index}>
+                    {ERA_PLAYLISTS.map((item, index) => <Link to={`/playlists?keywords=${item.keyword}&label=${item.label}`} className={`aspect-square ${item.color} rounded flex items-center justify-center cursor-pointer hover:animate-pulse skulls relative`} key={index}>
                         <img className='absolute w-full z-0 opacity-30' src='/soundwave2.svg' />
                         <p className='text-3xl sm:text-4xl font-medium antialiased text-text-dark z-10'>{item.label}</p>
-                    </div>)}
+                    </Link>)}
 
                 </div>                  
 

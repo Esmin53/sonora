@@ -8,7 +8,7 @@ export const MOOD_PLAYLISTS = [
   {
     name: "sad",
     label: "Sad",
-    keyword: "sad melancholic nostalgic",
+    keyword: "sad+melancholic+nostalgic",
     color: "bg-[#7b2cbf]",
   },
   {
