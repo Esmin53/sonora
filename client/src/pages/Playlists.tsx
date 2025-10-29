@@ -19,6 +19,8 @@ interface SpotifyPlaylist {
   }
 }
 
+const serverUrl = import.meta.env.VITE_SERVER_URL;
+
 const Playlists = () => {
     const [playlists, setPlaylists] = useState<SpotifyPlaylist[] >([])
     const [page, setPage] = useState<number >(0)
@@ -32,7 +34,7 @@ const Playlists = () => {
     const getData = async () => {
         setIsFetching(true)
         try {
-             const response = await axios.get(`http://localhost:5000/playlists?keywords=${keywords}&page=${page}`)
+             const response = await axios.get(`${serverUrl}/playlists?keywords=${keywords}&page=${page}`)
 
             if (page === 0) {
                 setPlaylists(response.data); 
@@ -40,7 +42,7 @@ const Playlists = () => {
                 setPlaylists(prev => [...prev, ...response.data]);
             }  
         } catch (error) {
-            
+            console.log(error)
         } finally {
             setIsLoading(false)
             setIsFetching(false)
@@ -80,7 +82,7 @@ const Playlists = () => {
                 </div>
                 <div className="w-full flex flex-col pt-4 sm:pt-8 gap-4 sm:gap-2">
                     {playlists?.map((item) => item && <div className="flex flex-col sm:flex-row min-h-52 lg:min-h-64 gap-4" key={item?.id}>
-                        <div className="h-64 sm:h-52 lg:h-64 aspect-square rounded bg-accent-light relative ">
+                        <div className="h-64 sm:h-52 lg:h-64 aspect-square rounded bg-foreground-light dark:bg-foreground-dark relative ">
                             {item?.images.length ? <img src={item.images[0].url} className="w-full h-full object-fill sm:object-cover rounded" /> : null}
                         </div>
                         <div className="flex flex-col gap-2 w-full">

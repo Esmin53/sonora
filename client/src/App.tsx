@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Playlists from "./pages/Playlists";
 import PlaylistPreview from "./pages/PlaylistPreview";
@@ -14,6 +14,12 @@ function App() {
   { path: "/playlists", element: <Playlists />},
   { path: "/playlist/:id", element: <PlaylistPreview />}
 ]);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) setTheme(savedTheme);
+    console.log(savedTheme)
+  }, []);
 
   return (
     <div className={`${theme === "dark" ? "dark" : ""}`}>

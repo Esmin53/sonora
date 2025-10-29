@@ -25,6 +25,8 @@ export interface SpotifyPlaylist {
   };
 }
 
+const serverUrl = import.meta.env.VITE_SERVER_URL;
+
 function formatDuration(ms: number) {
   const totalSeconds = Math.floor(ms / 1000);
   const minutes = Math.floor(totalSeconds / 60);
@@ -40,7 +42,7 @@ const PlaylistPreview = () => {
 
   const getPlaylist = async () => {
     try {
-        const response = await axios.get(`http://localhost:5000/playlist/${id}`)
+        const response = await axios.get(`${serverUrl}/playlist/${id}`)
 
         setPlaylist(response.data)
     } catch (error) {
@@ -59,7 +61,7 @@ const PlaylistPreview = () => {
 <div className='dark:bg-background-dark bg-background-light text-text-light dark:text-text-dark w-full min-h-screen flex flex-col items-center'>
         <div className="w-full flex items-center flex-col dark:bg-foreground-dark bg-foreground-light ">
             <div className="w-full max-w-7xl relative flex flex-col sm:flex-row min-h-56 py-1 sm:py-8 sm:gap-4 lg:gap-8 px-4">
-              <img src="/public/soundwave.svg" className="absolute w-4/6 right-0 z-0 opacity-50 dark:opacity-80 top-1/2 -translate-y-1/2"/>
+              <img src="/soundwave.svg" className="absolute w-4/6 right-0 z-0 opacity-50 dark:opacity-80 top-1/2 -translate-y-1/2"/>
               <div className="p-4 sm:h-60 lg:h-72 sm:aspect-square rounded relative">
                   {!isLoading && playlist?.images.length ? <img src={playlist?.images[0].url} className="w-full object-cover rounded"/> : null}
                   {isLoading ? <div className="w-full h-full bg-background-light dark:bg-background-dark animate-pulse"/> : null}
@@ -87,7 +89,7 @@ const PlaylistPreview = () => {
                     <img className="h-full object-cover rounded-sm shadow-sm" src={item?.track?.album.images[0].url } />
                   </div>
                       <div className="flex-1 flex flex-col">
-                        <p className="text-xl font-medium">{item.track.name} </p>
+                        <p className="text-lg sm:text-xl font-medium">{item.track.name} </p>
                         <div className="flex gap-2 flex-wrap">
                           {item?.track?.artists.map((item) => <p>{item.name} </p>)} 
                         </div>

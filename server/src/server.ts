@@ -6,7 +6,7 @@ import { SpotifyPlaylist, SpotifySearchResponse } from "./types/spotify";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5002;
+
 
 app.use(cors());
 app.use(express.json());
@@ -76,7 +76,7 @@ app.get("/playlist/:id", async (req, res) => {
   res.json(data);
 });
 
-
-app.listen(PORT, () => {
-  console.log(`Brzo trcim server na ${PORT} `);
+const PORT = Number(process.env.PORT) || 5002;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
