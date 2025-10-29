@@ -64,6 +64,18 @@ app.get("/playlists", async (req, res) => {
   }
 });
 
+app.get("/playlist/:id", async (req, res) => {
+  const { id } = req.params;
+  const token = await getSpotifyToken();
+
+  const response = await fetch(`https://api.spotify.com/v1/playlists/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  const data = await response.json();
+  res.json(data);
+});
+
 
 app.listen(PORT, () => {
   console.log(`Brzo trcim server na ${PORT} `);
